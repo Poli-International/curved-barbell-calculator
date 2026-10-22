@@ -9,7 +9,7 @@ const PRESETS = [
   {
     id: 'rook',
     name: 'Rook',
-    icon: '👂',
+    icon: '<svg class=ti-i width=1.15em height=1.15em aria-hidden=true style=vertical-align:-.18em;flex:none><use href=../shared/icons.svg#i-ring></use></svg>',
     desc: 'Antihelix cartilage fold — upper inner ear',
     typicalMin: 5, typicalMax: 9,
     gauge: '16g (1.2 mm)',
@@ -21,7 +21,7 @@ const PRESETS = [
   {
     id: 'daith',
     name: 'Daith',
-    icon: '🔵',
+    icon: '<svg class=ti-i width=.7em height=.7em aria-hidden=true style=vertical-align:-.18em;flex:none><use href=../shared/icons.svg#i-dot-blue></use></svg>',
     desc: 'Innermost cartilage fold — crus of helix',
     typicalMin: 7, typicalMax: 11,
     gauge: '16g (1.2 mm) or 14g (1.6 mm)',
@@ -33,7 +33,7 @@ const PRESETS = [
   {
     id: 'snug',
     name: 'Snug',
-    icon: '🔶',
+    icon: '<svg class=ti-i width=1.15em height=1.15em aria-hidden=true style=vertical-align:-.18em;flex:none><use href=../shared/icons.svg#i-ring></use></svg>',
     desc: 'Anti-helix cartilage — mid inner ear rim',
     typicalMin: 6, typicalMax: 10,
     gauge: '16g (1.2 mm)',
@@ -45,7 +45,7 @@ const PRESETS = [
   {
     id: 'conch',
     name: 'Conch (curved)',
-    icon: '🐚',
+    icon: '<svg class=ti-i width=1.15em height=1.15em aria-hidden=true style=vertical-align:-.18em;flex:none><use href=../shared/icons.svg#i-ring></use></svg>',
     desc: 'Bowl of the ear — inner or outer conch',
     typicalMin: 7, typicalMax: 12,
     gauge: '16g or 14g (1.2–1.6 mm)',
@@ -57,7 +57,7 @@ const PRESETS = [
   {
     id: 'eyebrow',
     name: 'Eyebrow / Anti-eyebrow',
-    icon: '✏️',
+    icon: '<svg class=ti-i width=1.15em height=1.15em aria-hidden=true style=vertical-align:-.18em;flex:none><use href=../shared/icons.svg#i-pen></use></svg>',
     desc: 'Surface-type curved barbell through brow ridge',
     typicalMin: 7, typicalMax: 10,
     gauge: '16g (1.2 mm)',
@@ -69,7 +69,7 @@ const PRESETS = [
   {
     id: 'navel',
     name: 'Navel / Belly button',
-    icon: '💛',
+    icon: '<svg class=ti-i width=1.15em height=1.15em aria-hidden=true style=vertical-align:-.18em;flex:none><use href=../shared/icons.svg#i-heart></use></svg>',
     desc: 'Upper rim of the navel',
     typicalMin: 9, typicalMax: 14,
     gauge: '14g (1.6 mm)',
@@ -93,7 +93,7 @@ const presetInfo       = document.getElementById('preset-info');
 
 // Populate piercing type select
 PRESETS.forEach(p => {
-  piercingTypeSel.insertAdjacentHTML('beforeend', `<option value="${escHtml(p.id)}">${escHtml(p.icon)} ${escHtml(p.name)}</option>`);
+  piercingTypeSel.insertAdjacentHTML('beforeend', `<option value="${escHtml(p.id)}">${escHtml(p.name)}</option>`);
 });
 
 piercingTypeSel.addEventListener('change', updatePresetInfo);
@@ -104,7 +104,7 @@ function updatePresetInfo() {
   if (!preset) { presetInfo.innerHTML = ''; return; }
   presetInfo.innerHTML = `
     <div class="preset-card">
-      <div class="preset-name">${escHtml(preset.icon)} ${escHtml(preset.name)}</div>
+      <div class="preset-name">${preset.icon} ${escHtml(preset.name)}</div>
       <div class="preset-desc">${escHtml(preset.desc)}</div>
       <div class="preset-detail">
         <span class="detail-lbl">Typical anatomy span:</span>
@@ -151,7 +151,7 @@ function buildResult(preset, span, stage, clearance, recommended, bestFit, nextU
   return `
     <div class="result-card">
       <div class="result-header">
-        <span class="result-icon">${escHtml(preset.icon)}</span>
+        <span class="result-icon">${preset.icon}</span>
         <div>
           <div class="result-title">${bestFit} mm internal length</div>
           <div class="result-sub">${escHtml(preset.name)} — ${escHtml(stageLabel)} tissue</div>
@@ -190,7 +190,7 @@ function buildResult(preset, span, stage, clearance, recommended, bestFit, nextU
         ${stage === 'fresh'
           ? 'the extra clearance allows for swelling during initial healing. Do not downsize before the piercing is fully healed.'
           : 'a snugger fit reduces leverage and movement. Only downsize once healing is confirmed by your piercer.'}
-        Always use implant-grade material — <a href="https://poliinternational.com/bioflex/" target="_blank" rel="noopener noreferrer">BioFlex® polymer</a>
+        Always use implant-grade metal or <a href="https://poliinternational.com/bioflex/" target="_blank" rel="noopener noreferrer">BioFlex® body jewelry</a>
         or ASTM F136 titanium for initial piercings.
       </div>
     </div>`;
